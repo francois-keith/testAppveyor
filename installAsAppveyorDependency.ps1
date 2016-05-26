@@ -3,10 +3,11 @@ $apr_url = "http://ftp.meisei-u.ac.jp/mirror/apache/dist//apr/apr-1.5.2-win32-sr
 $aprutil_url = "http://ftp.meisei-u.ac.jp/mirror/apache/dist//apr/apr-util-1.5.4-win32-src.zip"
 $log4cxx_url = "http://ftp.meisei-u.ac.jp/mirror/apache/dist/logging/log4cxx/0.10.0/apache-log4cxx-0.10.0.zip"
 
-
+# cloning git repo (and creating lo4cxxWin32 directory)
 pushd $Env:SOURCE_FOLDER
-md log4cxxWin32
+git clone git://github.com/aescande/log4cxxWin32.git log4cxxWin32
 
+# downloading source code, extract and move/rename
 (New-Object System.Net.WebClient).DownloadFile($apr_url, "apr.zip")
 (New-Object System.Net.WebClient).DownloadFile($aprutil_url, "aprutil.zip")
 (New-Object System.Net.WebClient).DownloadFile($log4cxx_url, "log4cxx.zip")
@@ -20,13 +21,21 @@ Move-Item -path $workingDir/apr/apr-1.5.2 -destination $Env:SOURCE_FOLDER/log4cx
 Move-Item -path $workingDir/apr-util/apr-util-1.5.4 -destination $Env:SOURCE_FOLDER/log4cxxWin32/apr-util
 Move-Item -path $workingDir/log4cxx/apache-log4cxx-0.10.0 -destination $Env:SOURCE_FOLDER/log4cxxWin32/log4cxx
 
-# cloning git repo into an already existing folder
-cd log4cxxWin32
-git init
-git remote add origin git://github.com/aescande/log4cxxWin32.git
-git fetch
-git branch master origin/master
-git checkout
+# patch and configure
+cd .\log4cxxWin32\scripts
+cmd
+configure.bat
+exit
+
+# finish setting up
+cd ..\cmake
+git submodule update --init
+md build
+cd build
+cmake ..\ -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=%CMAKE_INSTALL_PREFIX%
+
+# build and install
+msbuild INSTALL.vcxproj
 
 # restore initial directory
 popd
