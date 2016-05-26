@@ -19,6 +19,7 @@ environment:
 before_build:
 - ps: >-
     Set-PSDebug -Trace 2
+	
     iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aescande/testAppveyor/master/installAsAppveyorDependency.ps1'))
     
     $blockRdp = $true 
