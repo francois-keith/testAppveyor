@@ -20,7 +20,7 @@ before_build:
 - ps: >-
     Set-PSDebug -Trace 2
     iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/escande/testAppveyor/installAsAppveyorDependency.ps1'))
-	
+    
     $blockRdp = $true 
-	
+    
     iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
