@@ -26,7 +26,7 @@ git init
 git remote add origin git://github.com/aescande/log4cxxWin32.git
 git fetch
 git branch master origin/master
-git checkout master
+git checkout
 
 # restore initial directory
 popd
