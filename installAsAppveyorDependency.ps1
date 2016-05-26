@@ -13,9 +13,9 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 [System.IO.Compression.ZipFile]::ExtractToDirectory("aprutil.zip","apr-util")
 [System.IO.Compression.ZipFile]::ExtractToDirectory("log4cxx.zip","log4cxx")
 
-Move-Item -path [Environment]::CurrentDirectory/apr/apr-1.5.2 -destination $Env:SOURCE_FOLDER/log4cxxWin32/apr
-Move-Item -path [Environment]::CurrentDirectory/apr-util/apr-util-1.5.4 -destination $Env:SOURCE_FOLDER/log4cxxWin32/apr-util
-Move-Item -path [Environment]::CurrentDirectory/log4cxx/apache-log4cxx-0.10.0 -destination $Env:SOURCE_FOLDER/log4cxxWin32/log4cxx
+Move-Item -path [environment]::CurrentDirectory/apr/apr-1.5.2 -destination $Env:SOURCE_FOLDER/log4cxxWin32/apr
+Move-Item -path [environment]::CurrentDirectory/apr-util/apr-util-1.5.4 -destination $Env:SOURCE_FOLDER/log4cxxWin32/apr-util
+Move-Item -path [environment]::CurrentDirectory/log4cxx/apache-log4cxx-0.10.0 -destination $Env:SOURCE_FOLDER/log4cxxWin32/log4cxx
 
 # cloning git repo into an already existing folder
 cd $Env:SOURCE_FOLDER/log4cxxWin32
