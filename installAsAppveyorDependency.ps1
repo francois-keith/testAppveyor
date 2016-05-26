@@ -24,7 +24,9 @@ Move-Item -path $workingDir/log4cxx/apache-log4cxx-0.10.0 -destination $Env:SOUR
 # patch and configure
 cd .\log4cxxWin32\scripts
 cmd
+echo "configure and patch"
 configure.bat
+echo "end configure and patch"
 exit
 
 # finish setting up
