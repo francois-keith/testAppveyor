@@ -5,6 +5,7 @@ $log4cxx_url = "http://ftp.meisei-u.ac.jp/mirror/apache/dist/logging/log4cxx/0.1
 
 
 pushd $Env:SOURCE_FOLDER
+md log4cxxWin32
 
 (New-Object System.Net.WebClient).DownloadFile($apr_url, "apr.zip")
 (New-Object System.Net.WebClient).DownloadFile($aprutil_url, "aprutil.zip")
@@ -20,7 +21,7 @@ Move-Item -path $workingDir/apr-util/apr-util-1.5.4 -destination $Env:SOURCE_FOL
 Move-Item -path $workingDir/log4cxx/apache-log4cxx-0.10.0 -destination $Env:SOURCE_FOLDER/log4cxxWin32/log4cxx
 
 # cloning git repo into an already existing folder
-cd $Env:SOURCE_FOLDER/log4cxxWin32
+cd log4cxxWin32
 git init
 git remote add origin git://github.com/aescande/log4cxxWin32.git
 git fetch
