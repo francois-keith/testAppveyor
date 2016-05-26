@@ -23,7 +23,7 @@ Move-Item -path $workingDir/log4cxx/apache-log4cxx-0.10.0 -destination $Env:SOUR
 
 # patch and configure
 cd .\log4cxxWin32\scripts
-cmd /c configure.bat
+Start-Process "cmd.exe" "/c configure.bat"
 
 # finish setting up
 cd ..\cmake
