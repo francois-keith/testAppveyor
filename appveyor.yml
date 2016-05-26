@@ -1,0 +1,26 @@
+version: 1.0.{build}
+os: Visual Studio 2015
+clone_folder: C:/devel-src/testAppveyor
+init:
+- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+environment:
+  CI_OS_NAME: win32
+  CI_TOOL: appveyor
+  CHOCO_DEPENDENCIES: "doxygen.portable"
+# Should be the same as clone_folder
+  PROJECT_SOURCE_DIR: C:/devel-src/testAppveyor
+# Do not tinker with the variables below unless you know what you are doing
+  SOURCE_FOLDER: C:\devel-src
+  CMAKE_INSTALL_PREFIX: C:/devel
+  PATH: C:/devel/bin;C:\Libraries\boost_1_59_0\lib64-msvc-14.0;%PATH%
+  PKG_CONFIG_PATH: C:/devel/lib/pkgconfig
+  BOOST_ROOT: C:\Libraries\boost_1_59_0
+  BOOST_LIBRARYDIR: C:\Libraries\boost_1_59_0\lib64-msvc-14.0
+before_build:
+- ps: >-
+    Set-PSDebug -Trace 2
+    iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/escande/testAppveyor/installAsAppveyorDependency.ps1'))
+	
+    $blockRdp = $true 
+	
+	iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
