@@ -5,7 +5,7 @@ $log4cxx_url = "http://ftp.meisei-u.ac.jp/mirror/apache/dist/logging/log4cxx/0.1
 
 # cloning git repo (and creating lo4cxxWin32 directory)
 pushd $Env:SOURCE_FOLDER
-git clone git://github.com/aescande/log4cxxWin32.git log4cxxWin32
+git clone git://github.com/francois-keith/log4cxxWin32.git log4cxxWin32
 
 # downloading source code, extract and move/rename
 (New-Object System.Net.WebClient).DownloadFile($apr_url, "apr.zip")
