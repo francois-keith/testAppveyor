@@ -36,6 +36,7 @@ cmake ..\ -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX="${Env:CMAKE_I
 
 # build and install
 msbuild INSTALL.vcxproj  /p:Configuration=Release
+msbuild INSTALL.vcxproj  /p:Configuration=Debug
 
 # restore initial directory
 popd
