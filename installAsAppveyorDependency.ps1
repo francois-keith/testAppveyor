@@ -33,6 +33,8 @@ git submodule update --init
 md build
 cd build
 cmake ..\ -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX="${Env:CMAKE_INSTALL_PREFIX}"
+type CMakeCache.txt
+dsgùdglmkùqds
 
 # build and install
 msbuild INSTALL.vcxproj  /p:Configuration=Release
